@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+      /* Reset de base */
+      nav {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      /* Conteneur de navigation */
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2c3e50;
+        padding: 15px 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Liens de navigation */
+      nav a {
+        color: #ecf0f1;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 25px;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* Effet hover - Changement de couleur et soulignement dynamique */
+      nav a:hover {
+        background-color: #1abc9c;
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Effet actif */
+      nav a:active {
+        background-color: #34495e;
+        color: #1abc9c;
+      }
+
+      /* Animation de soulignement dynamique */
+      nav a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #1abc9c;
+        transition: all 0.3s ease-in-out;
+        transform: translateX(-50%);
+      }
+
+      nav a:hover::before {
+        width: 100%;
+      }
+      /* Global Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      header {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .dashboard-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h2,
+      h3 {
+        color: #444;
+        text-align: center;
+      }
+
+      /* Section Styles */
+      .section {
+        margin-bottom: 30px;
+      }
+
+      .section table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .section table,
+      .section th,
+      .section td {
+        border: 1px solid #ddd;
+      }
+
+      .section th,
+      .section td {
+        padding: 10px;
+        text-align: left;
+      }
+
+      .section th {
+        background-color: #4caf50;
+        color: #fff;
+      }
+
+      .section tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      /* Button Styles */
+      .actions button,
+      .add-product button {
+        padding: 8px 12px;
+        margin-right: 5px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .actions button {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .actions button:hover {
+        background-color: #555;
+      }
+
+      .add-product button {
+        background-color: #4caf50;
+        color: #fff;
+      }
+
+      .add-product button:hover {
+        background-color: #45a049;
+      }
+
+      /* Input Styles */
+      .add-product input {
+        margin: 5px 0;
+        padding: 8px;
+        font-size: 14px;
+        width: calc(100% - 16px);
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      /* Performance Section */
+      #website-performance p {
+        font-size: 16px;
+        margin: 10px 0;
+      }
+
+      #website-performance p strong {
+        color: #4caf50;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Admin Dashboard</h1>
+    </header>
+
+    <div class="dashboard-container">
+      <!-- Manage Products Section -->
+      <div class="section" id="manage-products">
+        <h3>Manage Products</h3>
+        <div class="add-product">
+          <input type="text" id="product-name" placeholder="Product Name" />
+          <input
+            type="text"
+            id="product-description"
+            placeholder="Product Description"
+          />
+          <input type="number" id="product-price" placeholder="Product Price" />
+          <button id="add-product-btn">Add Product</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="product-table-body">
+            <!-- Dynamic content goes here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- View Sales and User Orders Section -->
+      <div class="section" id="user-orders">
+        <h3>View Sales and User Orders</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>User</th>
+              <th>Products</th>
+              <th>Total</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>101</td>
+              <td>Jane Doe</td>
+              <td>Rose Elegance, Citrus Zest</td>
+              <td>$89.98</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>102</td>
+              <td>John Smith</td>
+              <td>Woody Breeze</td>
+              <td>$49.99</td>
+              <td>Processing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Website Performance Section -->
+      <div class="section" id="website-performance">
+        <h3>Website Performance</h3>
+        <p><strong>Total Users:</strong> 1,234</p>
+        <p><strong>Total Sales:</strong> $45,678.90</p>
+        <p><strong>Products Listed:</strong> 19</p>
+      </div>
+    </div>
+
+    <script>
+      const productTableBody = document.getElementById("product-table-body");
+      const addProductBtn = document.getElementById("add-product-btn");
+      const productNameInput = document.getElementById("product-name");
+      const productDescriptionInput = document.getElementById(
+        "product-description"
+      );
+      const productPriceInput = document.getElementById("product-price");
+
+      let products = [];
+      let productId = 1;
+
+      // Add product functionality
+      addProductBtn.addEventListener("click", () => {
+        const name = productNameInput.value.trim();
+        const description = productDescriptionInput.value.trim();
+        const price = parseFloat(productPriceInput.value.trim());
+
+        if (!name || !description || isNaN(price)) {
+          alert("Please fill in all fields correctly.");
+          return;
+        }
+
+        const product = { id: productId++, name, description, price };
+        products.push(product);
+        updateProductTable();
+        clearInputs();
+      });
+
+      // Update product table
+      function updateProductTable() {
+        productTableBody.innerHTML = "";
+        products.forEach((product) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.description}</td>
+                    <td>$${product.price.toFixed(2)}</td>
+                    <td class="actions">
+                        <button onclick="editProduct(${
+                          product.id
+                        })">Edit</button>
+                        <button onclick="deleteProduct(${
+                          product.id
+                        })">Delete</button>
+                    </td>
+                `;
+          productTableBody.appendChild(row);
+        });
+      }
+
+      // Clear input fields
+      function clearInputs() {
+        productNameInput.value = "";
+        productDescriptionInput.value = "";
+        productPriceInput.value = "";
+      }
+
+      // Edit product
+      function editProduct(id) {
+        const product = products.find((p) => p.id === id);
+        if (!product) return;
+
+        const newName = prompt("Enter new name:", product.name);
+        const newDescription = prompt(
+          "Enter new description:",
+          product.description
+        );
+        const newPrice = parseFloat(prompt("Enter new price:", product.price));
+
+        if (newName && newDescription && !isNaN(newPrice)) {
+          product.name = newName;
+          product.description = newDescription;
+          product.price = newPrice;
+          updateProductTable();
+        } else {
+          alert("Invalid input!");
+        }
+      }
+
+      // Delete product
+      function deleteProduct(id) {
+        products = products.filter((p) => p.id !== id);
+        updateProductTable();
+      }
+    </script>
+  </body>
+</html>
