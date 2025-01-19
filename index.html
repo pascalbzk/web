@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="product-listing.html">Products</a>
+        <a href="shopping cart.html">Cart</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+      <div class="menu-container">
+        <button class="menu-button" onclick="toggleMenu()">&#x22EE;</button>
+        <div id="dropdown-menu" class="dropdown">
+          <a href="contact us.html">Contact us</a>
+          <a href="about us.html">about us</a>
+          <a href="registration.html">login</a>
+        </div>
+      </div>
+    </header>
+    <script src="js/script.js"></script>
+    <script src="js/footer.js" defer></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mira's Perfume Store - Home</title>
+
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+        
+      /* General Reset */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+      }
+
+      /* Header Styling */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #d6dce2;
+        color: #ecf0f1;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Menu Button */
+      .menu-container {
+        position: relative;
+      }
+
+      .menu-button {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #ecf0f1;
+        cursor: pointer;
+        padding: 5px;
+        transition: color 0.3s ease;
+      }
+
+      .menu-button:hover {
+        color: #1abc9c;
+      }
+
+      /* Dropdown Menu */
+      .dropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 40px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        width: 150px;
+        z-index: 1000;
+      }
+
+      .dropdown a {
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #2c3e50;
+        font-size: 14px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .dropdown a:hover {
+        background-color: #1abc9c;
+        color: white;
+      }
+
+      /* General Reset */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+      }
+
+      /* Navigation Bar Styling */
+      nav {
+        background-color: #2c3e50;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      nav a {
+        color: #ecf0f1;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: color 0.3s ease, background-color 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 4px;
+      }
+
+      nav a:hover {
+        background-color: #34495e;
+        color: #1abc9c;
+      }
+
+      nav a:active {
+        background-color: #1abc9c;
+        color: white;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header h1 {
+        margin: 0;
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+      }
+
+      .search-bar input {
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+
+      .search-bar button {
+        padding: 5px 10px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #555;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        padding: 20px;
+      }
+
+      .gallery-item {
+        text-align: center;
+      }
+
+      .gallery img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        transition: transform 0.2s;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05);
+      }
+
+      .gallery .item-name {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 5px;
+      }
+
+      .gallery .item-price {
+        font-size: 14px;
+        color: #555;
+        margin-top: 2px;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+        color: #acb7c2;
+      }
+
+      .section {
+        margin: 20px auto;
+        max-width: 1200px;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 10px;
+      }
+
+      .gallery-item {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .gallery img {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .item-name {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+
+      .item-price {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .first-quality {
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: bold;
+        padding: 5px;
+      }
+
+      .second-quality {
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: bold;
+        padding: 5px;
+      }
+      body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .content {
+      flex: 1;
+    }
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    footer a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #1abc9c;
+    }
+  </style>
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>MIRA'S PERFUME STORE</h1>
+      <div class="search-bar">
+        <input type="text" placeholder="Search for perfumes..." />
+        <button>Search</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="gallery">
+        <!-- Placeholder items -->
+      </section>
+    </main>
+    <div id="footer-container"></div>
+    <header>
+      <h1>Bienvenue chez Mira's Perfume Store</h1>
+    </header>
+
+    <main>
+      <!-- Première Qualité -->
+      <section class="section">
+        <h2>Première Qualité</h2>
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="assets/black opium big.webp" alt="BLACK OPIUM BIG" />
+            <div class="item-name">BLACK OPIUM BIG</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$59.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/black opium small.webp" alt="BLACK OPIUM SMALL" />
+            <div class="item-name">BLACK OPIUM SMALL</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="assets/Bleu_De_Chanel_For_Men.webp"
+              alt="BLUE DE CHANNEL FOR MEN"
+            />
+            <div class="item-name">BLUE DE CHANNEL FOR MEN</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/bora bora.jpg" alt="BORA BORA" />
+            <div class="item-name">BORA BORA</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/brane men.webp" alt="BRANE MEN" />
+            <div class="item-name">BRANE MEN</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/club de nuit.jpg" alt="CLUB DE NUIT" />
+            <div class="item-name">CLUB DE NUIT</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/dark brown.webp" alt="DARK BROWN" />
+            <div class="item-name">DARK BROWN</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/fogg perfume.jpeg" alt="FOGG" />
+            <div class="item-name">FOGG</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/good girl.jpg" alt="GOOD GIRL" />
+            <div class="item-name">GOOD GIRL</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/intense man  perfume.jpg" alt="INTENSE MAN" />
+            <div class="item-name">INTENSE MAN</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/intense.webp" alt="INTENSE" />
+            <div class="item-name">INTENSE</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/lynx perfume.jpeg" alt="LYNX" />
+            <div class="item-name">LYNX</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/mosuf  perfume.jpg" alt="MOSUF" />
+            <div class="item-name">MOSUF</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/my way perfume.jpeg" alt="MY WAY " />
+            <div class="item-name">MY WAY</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/savage.avif" alt="SAVAGE" />
+            <div class="item-name">SAVAGE</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/smart man.jpeg" alt="SMART MAN" />
+            <div class="item-name">SMART MAN</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/vigo flame.png" alt="VIGO FLAME" />
+            <div class="item-name">VIGO FLAME</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/vigorous flame.jpg" alt="VIGORIOUS FLAME" />
+            <div class="item-name">VIGORIOUS FLAME</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/yara.avif" alt="YARA" />
+            <div class="item-name">YARA</div>
+            <div class="first-quality">Première Qualité</div>
+            <div class="item-price">$79.99</div>
+          </div>
+          <!-- Ajouter plus de parfums ici -->
+        </div>
+      </section>
+
+      <!-- Deuxième Qualité -->
+      <section class="section">
+        <h2>Deuxième Qualité</h2>
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="assets/black opium big.webp" alt="Black Opium" />
+            <div class="item-name">BLACK OPIUM BIG</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$39.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/black opium small.webp" alt="BLACK OPIUM" />
+            <div class="item-name">BLACK OPIUM SAMLL</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="assets/Bleu_De_Chanel_For_Men.webp"
+              alt="Bleu de Chanel"
+            />
+            <div class="item-name">BLUE DE CHANNEL FOR MEN</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/bora bora.jpg" alt="BORA BORA" />
+            <div class="item-name">BORA BORA</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/brane men.webp" alt="BRANE MEN" />
+            <div class="item-name">BRANE MEN</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/club de nuit.jpg" alt="CLUB DE NUIT" />
+            <div class="item-name">CLUB DE NUIT</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/dark brown.webp" alt="DARK BROWN" />
+            <div class="item-name">DARK BROWN</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/fogg perfume.jpeg" alt="FOGG" />
+            <div class="item-name">FOGG</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/good girl.jpg" alt="GOOD GIRL" />
+            <div class="item-name">GOOD GIRL</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/intense man  perfume.jpg" alt="INTENSE" />
+            <div class="item-name">INTENSE FOR MEN</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/intense.webp" alt="INTENSE" />
+            <div class="item-name">INTENSE</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/lynx perfume.jpeg" alt="LYNX" />
+            <div class="item-name">LYNX</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/mosuf  perfume.jpg" alt="MOSUF" />
+            <div class="item-name">MOSUF</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/my way perfume.jpeg" alt="MY WAY" />
+            <div class="item-name">MY WAY</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/savage.avif" alt="SAVAGE" />
+            <div class="item-name">SAVAGE</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/smart man.jpeg" alt="SMART MEN" />
+            <div class="item-name">SMART MAN</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/vigo flame.png" alt="VIGO" />
+            <div class="item-name">VIGO FLAME</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/vigorous flame.jpg" alt="VIGORIOUS FLAME" />
+            <div class="item-name">VIGORIOUS FLAME</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/yara.avif" alt="YARA" />
+            <div class="item-name">YARA</div>
+            <div class="second-quality">Deuxième Qualité</div>
+            <div class="item-price">$49.99</div>
+          </div>
+          <!-- Ajouter plus de parfums ici -->
+        </div>
+      </section>
+    </main>
+    <div class="content">
+        <!-- Contenu principal -->
+        
+      </div>
+      <footer>
+        <p>&copy; 2024 Mira's Perfume Store. All rights reserved.</p>
+        <div>
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+          <a href="mailto:yourmail@example.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+        <p><a href="terms and conditions.html">Terms and Conditions</a></p>
+      </footer>
+  </body>
+</html>
