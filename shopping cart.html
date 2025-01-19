@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about us.html">About Us</a>
+        <a href="product-listing.html">Products</a>
+        <a href="shopping cart.html">Cart</a>
+        <a href="contact us.html">Contact Us</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </header>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart Interface</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+      /* Reset de base */
+      nav {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      /* Conteneur de navigation */
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2c3e50;
+        padding: 15px 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Liens de navigation */
+      nav a {
+        color: #ecf0f1;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 25px;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* Effet hover - Changement de couleur et soulignement dynamique */
+      nav a:hover {
+        background-color: #1abc9c;
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Effet actif */
+      nav a:active {
+        background-color: #34495e;
+        color: #1abc9c;
+      }
+
+      /* Animation de soulignement dynamique */
+      nav a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #1abc9c;
+        transition: all 0.3s ease-in-out;
+        transform: translateX(-50%);
+      }
+
+      nav a:hover::before {
+        width: 100%;
+      }
+      /* Updated CSS for better design and effects */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom right, #f4f4f4, #e0e0e0);
+      }
+      header {
+        background-color: #4e5a4f;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+      .cart-container {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 25px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+      }
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #ccc;
+        transition: transform 0.3s ease-in-out;
+      }
+      .cart-item:hover {
+        transform: translateX(5px);
+        background: #f9f9f9;
+      }
+      .cart-item img {
+        width: 100px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .cart-item-details {
+        flex: 2;
+        margin-left: 20px;
+      }
+      .cart-item-details h4 {
+        margin: 5px 0;
+        font-size: 1.2em;
+        color: #333;
+      }
+      .cart-item-details p {
+        margin: 5px 0;
+        font-size: 0.9em;
+        color: #777;
+      }
+      .cart-item-actions {
+        text-align: center;
+      }
+      .cart-item-actions input {
+        width: 50px;
+        padding: 8px;
+        font-size: 1em;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .remove-button {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 7px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+        transition: background 0.3s ease;
+      }
+      .remove-button:hover {
+        background-color: #d32f2f;
+      }
+      .cart-total {
+        text-align: right;
+        margin-top: 20px;
+        font-size: 1.5em;
+        color: #333;
+      }
+      .checkout-button {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        cursor: pointer;
+        border-radius: 7px;
+        font-size: 1em;
+        display: block;
+        margin: 30px auto 10px;
+        text-align: center;
+        transition: background 0.3s ease;
+      }
+      .checkout-button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Shopping Cart Interface</h1>
+    </header>
+
+    <div class="cart-container">
+      <div id="cart-items"></div>
+      <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+      <button class="checkout-button">Checkout</button>
+    </div>
+
+    <script>
+      let cart = [
+        {
+          id: 1,
+          name: "Rose Elegance",
+          price: 49.99,
+          quantity: 1,
+          image: "assets/rose-elegance.jpg",
+        },
+        {
+          id: 2,
+          name: "Citrus Zest",
+          price: 39.99,
+          quantity: 2,
+          image: "assets/citrus-zest.jpg",
+        },
+      ];
+
+      const cartItemsContainer = document.getElementById("cart-items");
+      const cartTotalElement = document.getElementById("cart-total");
+
+      function renderCart() {
+        cartItemsContainer.innerHTML = "";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+
+          const cartItem = document.createElement("div");
+          cartItem.className = "cart-item";
+          cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p>Price: $${item.price.toFixed(2)}</p>
+                    </div>
+                    <div class="cart-item-actions">
+                        <input type="number" min="1" value="${
+                          item.quantity
+                        }" data-index="${index}">
+                        <button class="remove-button" data-index="${index}">Remove</button>
+                    </div>
+                `;
+          cartItemsContainer.appendChild(cartItem);
+        });
+
+        cartTotalElement.textContent = total.toFixed(2);
+
+        const quantityInputs = cartItemsContainer.querySelectorAll(
+          "input[type='number']"
+        );
+        quantityInputs.forEach((input) =>
+          input.addEventListener("change", updateQuantity)
+        );
+
+        const removeButtons =
+          cartItemsContainer.querySelectorAll(".remove-button");
+        removeButtons.forEach((button) =>
+          button.addEventListener("click", removeItem)
+        );
+      }
+
+      function updateQuantity(event) {
+        const index = event.target.dataset.index;
+        const newQuantity = parseInt(event.target.value);
+        if (newQuantity > 0) {
+          cart[index].quantity = newQuantity;
+        } else {
+          cart[index].quantity = 1;
+        }
+        renderCart();
+      }
+
+      function removeItem(event) {
+        const index = event.target.dataset.index;
+        cart.splice(index, 1);
+        renderCart();
+      }
+
+      renderCart();
+    </script>
+  </body>
+</html>
