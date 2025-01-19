@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about us.html">About Us</a>
+        <a href="product-listing.html">Products</a>
+        <a href="shopping cart.html">Cart</a>
+        <a href="contact us.html">Contact Us</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </header>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfume Store - Product Detail</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+      /* Reset de base */
+      nav {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      /* Conteneur de navigation */
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2c3e50;
+        padding: 15px 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Liens de navigation */
+      nav a {
+        color: #ecf0f1;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 25px;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* Effet hover - Changement de couleur et soulignement dynamique */
+      nav a:hover {
+        background-color: #1abc9c;
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Effet actif */
+      nav a:active {
+        background-color: #34495e;
+        color: #1abc9c;
+      }
+
+      /* Animation de soulignement dynamique */
+      nav a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #1abc9c;
+        transition: all 0.3s ease-in-out;
+        transform: translateX(-50%);
+      }
+
+      nav a:hover::before {
+        width: 100%;
+      }
+      /* Global Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        color: #333;
+      }
+
+      header {
+        background-color: #6d6875;
+        color: #fff;
+        padding: 15px 20px;
+        text-align: center;
+        font-size: 24px;
+        letter-spacing: 1px;
+      }
+
+      .product-detail {
+        max-width: 900px;
+        margin: 30px auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .product-detail img {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .product-info h1 {
+        font-size: 28px;
+        color: #4a4e69;
+      }
+
+      .product-info p {
+        font-size: 16px;
+        color: #555;
+      }
+
+      .product-info .price {
+        font-size: 24px;
+        color: #f28f3b;
+        font-weight: bold;
+        margin: 20px 0;
+      }
+
+      .actions {
+        margin-top: 20px;
+      }
+
+      .quantity label {
+        font-size: 16px;
+        margin-right: 10px;
+        color: #333;
+      }
+
+      .quantity input {
+        width: 60px;
+        padding: 8px;
+        font-size: 16px;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .add-to-cart {
+        margin-top: 15px;
+        background-color: #6d6875;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 18px;
+        transition: background-color 0.3s;
+      }
+
+      .add-to-cart:hover {
+        background-color: #4a4e69;
+      }
+
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+
+      .navigation button {
+        background-color: #6d6875;
+        color: #fff;
+        padding: 10px 25px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+
+      .navigation button:hover {
+        background-color: #4a4e69;
+      }
+
+      @media (max-width: 768px) {
+        .product-detail {
+          padding: 20px;
+        }
+
+        .product-info h1 {
+          font-size: 24px;
+        }
+
+        .navigation button {
+          font-size: 14px;
+          padding: 8px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>Perfume Store</header>
+
+    <div class="product-detail">
+      <img id="product-image" src="assets/savage.avif" alt="Perfume Image" />
+      <div class="product-info">
+        <h1 id="product-name">Perfume Name</h1>
+        <p id="product-description">Perfume Description</p>
+        <p id="product-price" class="price">$49.99</p>
+      </div>
+      <div class="actions">
+        <div class="quantity">
+          <label for="quantity">Quantity:</label>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            value="1"
+          />
+        </div>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="navigation">
+        <button id="prev-button">Prev</button>
+        <button id="next-button">Next</button>
+      </div>
+    </div>
+
+    <script>
+      const products = [
+        {
+          id: 1,
+          name: "Black Opium Big",
+          description: "A floral fragrance with hints of rose and jasmine.",
+          price: 49.99,
+          image: "assets/black opium big.webp",
+        },
+        {
+          id: 2,
+          name: "Black Opium Small",
+          description: "A refreshing blend of lemon, lime, and orange.",
+          price: 39.99,
+          image: "assets/black opium small.webp",
+        },
+        {
+          id: 3,
+          name: "Blue de Chanel for Men",
+          description: "A bold and woody scent for confident men.",
+          price: 59.99,
+          image: "assets/bleu_de_chanel_for_men.webp",
+        },
+        {
+          id: 4,
+          name: "Bora Bora",
+          description: "A tropical escape in a bottle.",
+          price: 45.99,
+          image: "assets/bora bora.jpg",
+        },
+        {
+          id: 5,
+          name: "Brane Men",
+          description: "A modern scent with a touch of sophistication.",
+          price: 49.99,
+          image: "assets/brane men.webp",
+        },
+        {
+          id: 6,
+          name: "Club de Nuit",
+          description: "An elegant blend of citrus and musk.",
+          price: 39.99,
+          image: "assets/club de nuit.jpg",
+        },
+        {
+          id: 7,
+          name: "Dark Brown",
+          description: "Warm and mysterious with spicy undertones.",
+          price: 49.99,
+          image: "assets/dark brown.webp",
+        },
+        {
+          id: 8,
+          name: "Fogg Perfume",
+          description: "A classic fragrance for all occasions.",
+          price: 39.99,
+          image: "assets/fogg perfume.jpeg",
+        },
+        {
+          id: 9,
+          name: "Good Girl",
+          description: "Sweet and playful with a hint of allure.",
+          price: 49.99,
+          image: "assets/good girl.jpg",
+        },
+        {
+          id: 10,
+          name: "Intense Men",
+          description: "A strong and captivating fragrance.",
+          price: 49.99,
+          image: "assets/intense.webp",
+        },
+        {
+          id: 11,
+          name: "Lynx",
+          description: "Dynamic and energetic, perfect for the young at heart.",
+          price: 39.99,
+          image: "assets/lynx perfume.jpeg",
+        },
+        {
+          id: 12,
+          name: "Mosuf",
+          description: "A rich and luxurious scent.",
+          price: 49.99,
+          image: "assets/mosuf perfume.jpg",
+        },
+        {
+          id: 13,
+          name: "My Way",
+          description: "Fresh and floral, perfect for daytime.",
+          price: 39.99,
+          image: "assets/my way perfume.jpeg",
+        },
+        {
+          id: 14,
+          name: "Savage",
+          description: "A bold and rugged scent for adventurers.",
+          price: 49.99,
+          image: "assets/savage.avif",
+        },
+        {
+          id: 15,
+          name: "Smart Man",
+          description: "Sharp and fresh with a modern twist.",
+          price: 39.99,
+          image: "assets/smart man.jpeg",
+        },
+        {
+          id: 16,
+          name: "Vigo Flame",
+          description: "Fiery and passionate, a statement scent.",
+          price: 49.99,
+          image: "assets/vigo flame.png",
+        },
+        {
+          id: 17,
+          name: "Vigorous Flame",
+          description: "Intense and vibrant with a long-lasting finish.",
+          price: 49.99,
+          image: "assets/vigorous flame.jpg",
+        },
+        {
+          id: 18,
+          name: "Yara",
+          description: "Soft and elegant with fruity undertones.",
+          price: 39.99,
+          image: "assets/yara.avif",
+        },
+      ];
+
+      let currentIndex = 0;
+
+      const productImage = document.getElementById("product-image");
+      const productName = document.getElementById("product-name");
+      const productDescription = document.getElementById("product-description");
+      const productPrice = document.getElementById("product-price");
+      const prevButton = document.getElementById("prev-button");
+      const nextButton = document.getElementById("next-button");
+
+      function updateProductDetails(index) {
+        const product = products[index];
+        productImage.src = product.image;
+        productName.textContent = product.name;
+        productDescription.textContent = product.description;
+        productPrice.textContent = `$${product.price.toFixed(2)}`;
+      }
+
+      prevButton.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + products.length) % products.length;
+        updateProductDetails(currentIndex);
+      });
+
+      nextButton.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % products.length;
+        updateProductDetails(currentIndex);
+      });
+
+      updateProductDetails(currentIndex);
+
+      // In product-listing.html
+      function viewProduct(productId) {
+        localStorage.setItem("selectedProductId", productId);
+        window.location.href = "product-detail.html";
+      }
+
+      // In product-detail.html
+      document.addEventListener("DOMContentLoaded", () => {
+        const productId = localStorage.getItem("selectedProductId");
+        if (productId) {
+          // Fetch and display product details based on the ID
+        }
+      });
+    </script>
+  </body>
+</html>
