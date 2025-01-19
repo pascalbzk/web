@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <header></header>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register / Login</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+      /* Global Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #6a11cb, #c4cbd8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+      }
+
+      .container {
+        max-width: 400px;
+        width: 90%;
+        background: #ffffff;
+        padding: 25px 20px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #2575fc;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus {
+        border-color: #2575fc;
+        outline: none;
+      }
+
+      .form-group button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        background: #2575fc;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      .form-group button:hover {
+        background: #6a11cb;
+        transform: translateY(-2px);
+      }
+
+      .form-group button:active {
+        transform: translateY(0);
+      }
+
+      .switch-link {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .switch-link a {
+        color: #2575fc;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .switch-link a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 480px) {
+        h2 {
+          font-size: 20px;
+        }
+
+        .form-group button {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 id="form-title">Login</h2>
+      <form id="auth-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div
+          class="form-group"
+          id="confirm-password-group"
+          style="display: none"
+        >
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+      <div class="switch-link">
+        <p id="switch-message">
+          Don't have an account? <a href="#" id="switch-link">Register</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const formTitle = document.getElementById("form-title");
+      const authForm = document.getElementById("auth-form");
+      const confirmPasswordGroup = document.getElementById(
+        "confirm-password-group"
+      );
+      const switchMessage = document.getElementById("switch-message");
+      const switchLink = document.getElementById("switch-link");
+
+      let isLogin = true;
+
+      switchLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        isLogin = !isLogin;
+
+        if (isLogin) {
+          formTitle.textContent = "Login";
+          confirmPasswordGroup.style.display = "none";
+          switchMessage.innerHTML =
+            "Don't have an account? <a href='#' id='switch-link'>Register</a>";
+        } else {
+          formTitle.textContent = "Register";
+          confirmPasswordGroup.style.display = "block";
+          switchMessage.innerHTML =
+            "Already have an account? <a href='#' id='switch-link'>Login</a>";
+        }
+      });
+
+      authForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (!isLogin) {
+          const confirmPassword =
+            document.getElementById("confirm-password").value;
+          if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+          }
+        }
+
+        alert(
+          `${isLogin ? "Login" : "Registration"} successful for ${username}`
+        );
+      });
+    </script>
+  </body>
+</html>
