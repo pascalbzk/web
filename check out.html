@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    </header>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .checkout-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout-container h2 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Payment Methods */
+        .payment-methods label {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .payment-methods input {
+            margin-right: 10px;
+        }
+
+        /* Checkout Button */
+        .checkout-button {
+            display: block;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .checkout-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .checkout-container {
+                padding: 15px;
+            }
+
+            .checkout-button {
+                padding: 12px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Checkout</h1>
+    </header>
+
+    <div class="checkout-container">
+        <h2>Shipping Information</h2>
+        <form id="checkout-form">
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Shipping Address</label>
+                <textarea id="address" name="address" placeholder="Enter your address" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Enter your city" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State/Province</label>
+                <input type="text" id="state" name="state" placeholder="Enter your state/province" required>
+            </div>
+            <div class="form-group">
+                <label for="zip-code">ZIP Code</label>
+                <input type="text" id="zip-code" name="zip-code" placeholder="Enter your ZIP code" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                    <option value="" disabled selected>Select your country</option>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="UK">UK</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <h2>Payment Information</h2>
+            <div class="payment-methods">
+                <label><input type="radio" name="payment-method" value="credit-card" required> Credit Card</label>
+                <label><input type="radio" name="payment-method" value="paypal" required> PayPal</label>
+                <label><input type="radio" name="payment-method" value="bank-transfer" required> Bank Transfer</label>
+            </div>
+
+            <button type="submit" class="checkout-button">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+        const checkoutForm = document.getElementById("checkout-form");
+
+        // Handle form submission
+        checkoutForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // Collect form data
+            const formData = new FormData(checkoutForm);
+            const orderDetails = {
+                fullName: formData.get("full-name"),
+                email: formData.get("email"),
+                address: formData.get("address"),
+                city: formData.get("city"),
+                state: formData.get("state"),
+                zipCode: formData.get("zip-code"),
+                country: formData.get("country"),
+                paymentMethod: formData.get("payment-method")
+            };
+
+            // Simulate order processing
+            alert("Thank you for your order, " + orderDetails.fullName + "! Your order has been placed.");
+            console.log("Order Details:", orderDetails);
+
+            // Reset form
+            checkoutForm.reset();
+        });
+    </script>
+</body>
+</html>
